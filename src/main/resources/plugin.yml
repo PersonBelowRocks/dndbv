@@ -1,0 +1,13 @@
+api-version: 1.18
+main: io.github.personbelowrocks.minecraft.dndbv.DndBoardVisualizer
+depend: [FastAsyncWorldEdit]
+
+name: DndBoardVisualizer
+version: 1.0-SHAPSHOT
+authors: [PersonBelowRocks]
+
+commands:
+  dndbv:
+    description: Master command
+    usage: /<command>
+    permission: dndbv.main

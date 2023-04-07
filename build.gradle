@@ -1,0 +1,73 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+    id 'java'
+    id 'idea'
+}
+
+group 'io.github.personbelowrocks.minecraft'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://papermc.io/repo/repository/maven-public/'
+
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+            includeGroup 'io.papermc.paper'
+        }
+    }
+
+    maven {
+        url = 'https://mvn.intellectualsites.com/content/groups/public/'
+
+        content {
+            includeGroup 'com.fastasyncworldedit'
+        }
+    }
+
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    maven { url = 'https://maven.enginehub.org/repo/' }
+}
+
+dependencies {
+
+    // compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+    compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
+
+    compileOnly 'net.kyori:adventure-text-minimessage:4.11.0'
+
+    implementation(platform("com.intellectualsites.bom:bom-1.18.x:1.17"))
+    compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core")
+    compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit")
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.20'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+//sourceSets {
+//    main.java.srcDirs = ['src/main/java']
+//    main.kotlin.srcDirs = ['src/main/kotlin']
+//    main.resources.srcDirs = ['src/main/resources']
+//}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
